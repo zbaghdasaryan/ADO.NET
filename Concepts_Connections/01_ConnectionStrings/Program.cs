@@ -16,7 +16,21 @@ namespace CBS.ADO_NET.ConnectionStrings
 
             SqlConnection connection = new SqlConnection(conStr);
 
-            
+            try
+            {
+                connection.Open(); // открытие физического подключения к источнику данных 
+                Console.WriteLine(connection.State);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close(); //закрытие физического соединения с источником данных
+                Console.WriteLine(connection.State);
+            }
+
         }
     }
 }
